@@ -35,4 +35,9 @@ class DespesaCadastrada extends Notification
             ->line('Valor: R$ ' . number_format($this->despesa->valor, 2, ',', '.'))
             ->salutation('Atenciosamente, ' . config('app.name'));
     }
+
+    public function getDespesa()
+    {
+        return $this->despesa;
+    }
 }
