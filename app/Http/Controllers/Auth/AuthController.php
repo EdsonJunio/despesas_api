@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Services\AuthService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-use OpenApi\Annotations as OA;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AuthController extends Controller
@@ -41,7 +41,7 @@ class AuthController extends Controller
         $data = $this->authService->login($credentials);
 
         if (!$data) {
-            return Response::json(['message' => 'Bad creds'], 401);
+            return Response::json(['message' => 'Incorrect username or password'], 401);
         }
 
         return Response::json($data, 201);

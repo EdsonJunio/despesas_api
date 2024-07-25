@@ -17,7 +17,7 @@ class DespesaService
     {
         $despesa = Despesa::create($data);
 
-        $user = User::find($data['usuario_id']);
+        $user = $despesa->user;
         if ($user) {
             $user->notify(new DespesaCadastrada($despesa));
         }
